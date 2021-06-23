@@ -18,8 +18,11 @@ public class Person {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID uuid;
+    private String personId;
     private String name;
     private String date;
     private String phone;
-    private String passport;
+
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Passport passport;
 }
